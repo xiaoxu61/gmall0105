@@ -31,6 +31,19 @@ public class UserController {
         return umsMembers;
     }
 
+    @RequestMapping("getUser")
+    @ResponseBody
+    public List<UmsMember> getUser(String id) {
+        List<UmsMember> umsMembers = userService.getUser(id);
+        return umsMembers;
+    }
+    @RequestMapping("deleteUser")
+    @ResponseBody
+    public int deleteUser(String id) {
+        int del = userService.deleteUser(id);
+        return del;
+    }
+
     @RequestMapping("index")
     @ResponseBody
     public String index() {
