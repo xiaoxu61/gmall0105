@@ -1,11 +1,13 @@
-package com.atguigu.gmall.user.bean;
+package com.atguigu.gmall.bean;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 
-public class UmsMember {
+public class UmsMember implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,12 +20,12 @@ public class UmsMember {
     private int status;
     private Date createTime;
     private String icon;
-    private int gender;
+    private String gender;
     private Date birthday;
     private String city;
     private String job;
     private String personalizedSignature;
-    private int sourceType;
+    private String sourceType;
     private int integration;
     private int growth;
     private int luckeyCount;
@@ -101,11 +103,11 @@ public class UmsMember {
         this.icon = icon;
     }
 
-    public int getGender() {
+    public String getGender() {
         return gender;
     }
 
-    public void setGender(int gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
 
@@ -141,11 +143,11 @@ public class UmsMember {
         this.personalizedSignature = personalizedSignature;
     }
 
-    public int getSourceType() {
+    public String getSourceType() {
         return sourceType;
     }
 
-    public void setSourceType(int sourceType) {
+    public void setSourceType(String sourceType) {
         this.sourceType = sourceType;
     }
 
@@ -181,4 +183,3 @@ public class UmsMember {
         this.historyIntegration = historyIntegration;
     }
 }
-
