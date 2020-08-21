@@ -4,7 +4,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.Date;
 
 public class UmsMember implements Serializable{
@@ -20,12 +19,12 @@ public class UmsMember implements Serializable{
     private int status;
     private Date createTime;
     private String icon;
-    private String gender;
+    private int gender;
     private Date birthday;
     private String city;
     private String job;
     private String personalizedSignature;
-    private String sourceType;
+    private int sourceType;
     private int integration;
     private int growth;
     private int luckeyCount;
@@ -103,11 +102,11 @@ public class UmsMember implements Serializable{
         this.icon = icon;
     }
 
-    public String getGender() {
+    public int getGender() {
         return gender;
     }
 
-    public void setGender(String gender) {
+    public void setGender(int gender) {
         this.gender = gender;
     }
 
@@ -143,11 +142,11 @@ public class UmsMember implements Serializable{
         this.personalizedSignature = personalizedSignature;
     }
 
-    public String getSourceType() {
+    public int getSourceType() {
         return sourceType;
     }
 
-    public void setSourceType(String sourceType) {
+    public void setSourceType(int sourceType) {
         this.sourceType = sourceType;
     }
 

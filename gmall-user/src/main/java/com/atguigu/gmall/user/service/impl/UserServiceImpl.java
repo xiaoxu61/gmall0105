@@ -1,5 +1,6 @@
 package com.atguigu.gmall.user.service.impl;
 
+import com.atguigu.gmall.bean.PmsBaseCatalog1;
 import com.atguigu.gmall.bean.UmsMember;
 import com.atguigu.gmall.bean.UmsMemberReceiveAddress;
 import com.atguigu.gmall.service.UserService;
@@ -26,25 +27,6 @@ public class UserServiceImpl implements UserService {
         return umsMembers;
     }
 
-    @Override
-    public List<UmsMember> getUser(String id) {
-
-        Example example = new Example(UmsMember.class);
-        example.createCriteria().andEqualTo("id",id);
-        List<UmsMember> umsMembers = userMapper.selectByExample(example);
-        return umsMembers;
-    }
-
-    @Override
-    public int deleteUser(String id) {
-        UmsMember umsMember = new UmsMember();
-        umsMember.setId(id);
-
-        int i = userMapper.delete(umsMember);
-
-        return i;
-    }
-
     public List<UmsMemberReceiveAddress> getReceiveAddressId(String memberId) {
         UmsMemberReceiveAddress umsMemberReceiveAddress = new UmsMemberReceiveAddress();
         umsMemberReceiveAddress.setMemberId(memberId);
@@ -53,8 +35,6 @@ public class UserServiceImpl implements UserService {
 
         return receiveAddress;
     }
-
-
 
 
 }

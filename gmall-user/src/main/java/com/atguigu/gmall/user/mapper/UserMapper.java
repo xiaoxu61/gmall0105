@@ -7,6 +7,4 @@ import java.util.List;
 
 public interface UserMapper extends Mapper<UmsMember>{
 
-    List<UmsMember> selectAllUser();
-
 }

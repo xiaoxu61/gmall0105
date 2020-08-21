@@ -1,16 +1,17 @@
 package com.atguigu.gmall.service;
 
-import com.atguigu.gmall.bean.UmsMember;
-import com.atguigu.gmall.bean.UmsMemberReceiveAddress;
+import com.atguigu.gmall.bean.*;
 
 import java.util.List;
 
 public interface UserService {
     List<UmsMember> getAllUser();
-
-    List<UmsMember> getUser(String id);
-
-    int deleteUser(String id);
+    List<PmsBaseCatalog3> getAllCatalog();
+    List<PmsBaseCatalog2> getAllCatalog2();
+    List<PmsBaseCatalog1> getAllCatalog1();
 
     List<UmsMemberReceiveAddress> getReceiveAddressId(String memberId);
+
+
+
 }
