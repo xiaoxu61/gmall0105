@@ -4,10 +4,20 @@
     <file url="file://$PROJECT_DIR$/demo" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/demo/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/demo/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/fastdfs-client-java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/gmall-common-util" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/gmall-mamage-service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/gmall-manage-service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/gmall-manage-service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/gmall-manage-web" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/gmall-manage-web" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/gmall-parent" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/gmall-parent" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/gmall-service-util" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/gmall-user" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/gmall-user-service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/gmall-user-web" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/gmall-user/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/gmall-user/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/gmall-web-util" charset="UTF-8" />
   </component>
 </project>

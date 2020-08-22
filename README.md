@@ -12,3 +12,5 @@ gmall-user-web 用户服务的web层8080
 
 gmall-manage-service用户服务的service层8071
 gmall-manage-web用户服务的web层8081
+完善了管理的service和web层，在Linux上搭建了fastdfs(将上传的图片存储在服务器上)
+和nginx(返回图片URL以及可通过客户端访问到该图片)以及两者的联动和设置了开机自启动
