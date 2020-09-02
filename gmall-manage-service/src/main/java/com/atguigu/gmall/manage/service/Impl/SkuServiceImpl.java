@@ -149,11 +149,10 @@ public class SkuServiceImpl implements SkuService {
         for (PmsSkuInfo pmsSkuInfo : pmsSkuInfos) {
             String skuId = pmsSkuInfo.getId();
             PmsSkuAttrValue pmsSkuAttrValue = new PmsSkuAttrValue();
-            pmsSkuAttrValue.setAttrId(skuId);
+            pmsSkuAttrValue.setSkuId(skuId);
             List<PmsSkuAttrValue> select = pmsSkuAttrValueMapper.select(pmsSkuAttrValue);
             pmsSkuInfo.setSkuAttrValueList(select);
         }
         return pmsSkuInfos;
     }
-
 }
