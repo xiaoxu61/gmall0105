@@ -61,7 +61,7 @@ public class ItemController {
         map.put("skuSaleAttrHashJsonStr",skuSaleAttrHashJsonStr);
 
 
-            return "item";
+        return "item";
     }
 
     @RequestMapping("index")

@@ -6,12 +6,19 @@ import java.util.List;
 
 public interface UserService {
     List<UmsMember> getAllUser();
-    List<PmsBaseCatalog3> getAllCatalog();
-    List<PmsBaseCatalog2> getAllCatalog2();
-    List<PmsBaseCatalog1> getAllCatalog1();
 
-    List<UmsMemberReceiveAddress> getReceiveAddressId(String memberId);
+    List<UmsMemberReceiveAddress> getReceiveAddressByMemberId(String memberId);
 
+    UmsMember login(UmsMember umsMember);
 
+    void addUserToken(String token, String memberId);
+
+    public UmsMember addOauthUser(UmsMember umsMember);
+
+    UmsMember checkOauthUser(UmsMember umsCheck);
+
+    UmsMember getOauthUser(UmsMember umsMemberCheck);
+
+    UmsMemberReceiveAddress getReceiveAddressById(String receiveAddressId);
 
 }
