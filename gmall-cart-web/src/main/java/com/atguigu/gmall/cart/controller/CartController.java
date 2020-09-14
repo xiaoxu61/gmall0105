@@ -30,21 +30,14 @@ public class CartController {
     @Reference
     CartService cartService;
 
-    @RequestMapping("toTrade")
-    @LoginRequired(loginSuccess = true)
-    public String toTrade(HttpServletRequest request, HttpServletResponse response, HttpSession session, ModelMap modelMap) {
-
-        String memberId = (String)request.getAttribute("memberId");
-        String nickname = (String)request.getAttribute("nickname");
-
-        return "toTrade";
-    }
 
     @RequestMapping("checkCart")
     @LoginRequired(loginSuccess = false)
     public String checkCart(String isChecked,String skuId,HttpServletRequest request, HttpServletResponse response, HttpSession session, ModelMap modelMap) {
 
-        String memberId = "1";
+        String memberId = (String)request.getAttribute("memberId");
+        String nickname = (String)request.getAttribute("nickname");
+        memberId = "1";
 
         // 调用服务，修改状态
         OmsCartItem omsCartItem = new OmsCartItem();
@@ -56,19 +49,22 @@ public class CartController {
         // 将最新的数据从缓存中查出，渲染给内嵌页
         List<OmsCartItem> omsCartItems = cartService.cartList(memberId);
         modelMap.put("cartList",omsCartItems);
-        // 被勾选商品的总额
-        BigDecimal totalAmount = getTotalAmount(omsCartItems);
-        modelMap.put("totalAmount",totalAmount);
 
+        // 被勾选商品的总额
+        BigDecimal totalAmount =getTotalAmount(omsCartItems);
+        modelMap.put("totalAmount",totalAmount);
         return "cartListInner";
     }
+
 
     @RequestMapping("cartList")
     @LoginRequired(loginSuccess = false)
     public String cartList(HttpServletRequest request, HttpServletResponse response, HttpSession session, ModelMap modelMap) {
 
         List<OmsCartItem> omsCartItems = new ArrayList<>();
-        String memberId = "1";
+        String memberId = (String)request.getAttribute("memberId");
+        String nickname = (String)request.getAttribute("nickname");
+        memberId = "1";
 
         if(StringUtils.isNotBlank(memberId)){
             // 已经登录查询db
@@ -86,33 +82,38 @@ public class CartController {
         }
 
         modelMap.put("cartList",omsCartItems);
-        //被勾选商品的总额
-        BigDecimal totalAmount = getTotalAmount(omsCartItems);
+        // 被勾选商品的总额
+        BigDecimal totalAmount =getTotalAmount(omsCartItems);
         modelMap.put("totalAmount",totalAmount);
-        System.out.println(totalAmount);
+        modelMap.put("userId",memberId);
+
         return "cartList";
     }
 
     private BigDecimal getTotalAmount(List<OmsCartItem> omsCartItems) {
-        BigDecimal bigDecimal = new BigDecimal("0");
+        BigDecimal totalAmount = new BigDecimal("0");
+
         for (OmsCartItem omsCartItem : omsCartItems) {
-            if (omsCartItem.getIsChecked().equals("1")) {
-                bigDecimal = bigDecimal.add(omsCartItem.getTotalPrice());
+            BigDecimal totalPrice = omsCartItem.getTotalPrice();
+
+            if(omsCartItem.getIsChecked().equals("1")){
+                totalAmount = totalAmount.add(totalPrice);
             }
         }
-        return bigDecimal;
+
+        return totalAmount;
     }
 
     @RequestMapping("addToCart")
     @LoginRequired(loginSuccess = false)
-    public String addToCart(String skuId, int quantity, HttpServletRequest request, HttpServletResponse response, HttpSession session){
-
+    public String addToCart(String skuId, int quantity, HttpServletRequest request, HttpServletResponse response, HttpSession session) {
         List<OmsCartItem> omsCartItems = new ArrayList<>();
 
         // 调用商品服务查询商品信息
         PmsSkuInfo skuInfo = skuService.getSkuById(skuId, "");
 
         // 将商品信息封装成购物车信息
+
         OmsCartItem omsCartItem = new OmsCartItem();
         omsCartItem.setCreateDate(new Date());
         omsCartItem.setDeleteStatus(0);
@@ -127,12 +128,14 @@ public class CartController {
         omsCartItem.setProductSkuCode("11111111111");
         omsCartItem.setProductSkuId(skuId);
         omsCartItem.setQuantity(new BigDecimal(quantity));
+        omsCartItem.setIsChecked("1");
 
 
         // 判断用户是否登录
-        //String memberId = "1";//"1";
         String memberId = (String)request.getAttribute("memberId");
         String nickname = (String)request.getAttribute("nickname");
+        memberId = "1";
+
 
         if (StringUtils.isBlank(memberId)) {
             // 用户没有登录
@@ -184,6 +187,7 @@ public class CartController {
             cartService.flushCartCache(memberId);
         }
 
+
         return "redirect:/success.html";
     }
 
@@ -198,9 +202,6 @@ public class CartController {
                 b = true;
             }
         }
-
-
         return b;
     }
-
 }

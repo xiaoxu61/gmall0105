@@ -1,6 +1,5 @@
 package com.atguigu.gmall.cart.service.impl;
 
-
 import com.alibaba.dubbo.config.annotation.Service;
 import com.alibaba.fastjson.JSON;
 import com.atguigu.gmall.bean.OmsCartItem;
@@ -12,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import redis.clients.jedis.Jedis;
 import tk.mybatis.mapper.entity.Example;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -100,7 +100,6 @@ public class CartServiceImpl implements CartService {
         }finally {
             jedis.close();
         }
-
         return omsCartItems;
     }
 
