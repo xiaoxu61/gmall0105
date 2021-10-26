@@ -20,7 +20,7 @@ public class UserController {
     @ResponseBody
 //    根据Member_id查询用户收集地址集合  在网页上输入http://user.gmall.com:8080/getReceiveAddressByMemberId?memberId=1   1就是要传入的id
     public List<UmsMemberReceiveAddress> getReceiveAddressByMemberId(String memberId) {
-        List<UmsMemberReceiveAddress> ReceiveAddress = userService.getReceiveAddressId(memberId);
+        List<UmsMemberReceiveAddress> ReceiveAddress = userService.getReceiveAddressByMemberId(memberId);
         return ReceiveAddress;
     }
 
